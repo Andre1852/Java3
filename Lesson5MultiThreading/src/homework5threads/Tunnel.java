@@ -13,8 +13,10 @@ public class Tunnel extends Stage{
         try {
             try {
                 System.out.println(c.getName() + " готовится к этапу (ждет): " + description);
+                MainClass.TUNNEL.acquire();
                 System.out.println(c.getName() + " начал этап: " + description);
                 Thread.sleep(length / c.getSpeed() * 1000);
+                MainClass.TUNNEL.release();
             } catch (InterruptedException e){
                 e.printStackTrace();
             } finally {
